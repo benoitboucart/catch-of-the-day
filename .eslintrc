@@ -1,13 +1,17 @@
 {
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "globals": {
   },
   "parserOptions": {
-    "ecmaVersion": 6
+    "ecmaVersion": 7,
+    "sourceType": "module"
   },
   "env": {
     "browser": true,
-    "es6": true 
+    "es6": true
   },
   rules: {
       'no-console': 'off',
