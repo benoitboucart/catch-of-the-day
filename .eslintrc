@@ -1,0 +1,16 @@
+{
+  "extends": "eslint:recommended",
+  "globals": {
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "env": {
+    "browser": true,
+    "es6": true 
+  },
+  rules: {
+      'no-console': 'off',
+      'quotes': [2, "backtick"]
+  }
+}
