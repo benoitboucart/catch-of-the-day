@@ -13,8 +13,8 @@
     "browser": true,
     "es6": true
   },
-  rules: {
-      'no-console': 'off',
-      'quotes': [2, "backtick"]
+  "rules": {
+      "no-console": "off",
+      "quotes": [2, "backtick"]
   }
 }
