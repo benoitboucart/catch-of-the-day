@@ -17,14 +17,28 @@ class App extends React.Component {
   }
 
   componentWillMount = () => {
+    // This runs before <App/> is rendered
     console.log(this.props);
     this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
       context: this,
       state: `fishes`
     });
+
+    // Check if any order in localStorage
+    const localStorageRef = localStorage.getItem(`order-${this.props.match.params.storeId}`);
+    if(localStorageRef){
+      // update our <App> component's order state
+      this.setState({
+        order: JSON.parse(localStorageRef)
+      });
+    }
   }
   componentWillUnmount = () => {
     base.removeBinding(this.ref);
+  }
+
+  componentWillUpdate = (nextProps, nextState) => {
+    localStorage.setItem(`order-${this.props.match.params.storeId}`, JSON.stringify(nextState.order))
   }
 
   addFish = (fish) => {
