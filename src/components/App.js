@@ -51,6 +51,18 @@ class App extends React.Component {
     this.setState({ fishes }); // { fishes: fishes }
   }
 
+  updateFish = (key, updatedFish) => {
+    const fishes = {...this.state.fishes};
+    fishes[key] = updatedFish;
+    this.setState({ fishes })
+  }
+
+  deleteFish = (key) => {
+    const fishes = {...this.state.fishes};
+    fishes[key] = null; // no delete, doesn't work in Firebase
+    this.setState({ fishes })
+  }
+
   loadSamples = () => {
     this.setState({
       fishes: sampleFishes
@@ -58,15 +70,15 @@ class App extends React.Component {
   }
 
   addToOrder = (key) => {
-    const order = {...this.state.order};
+    const order = { ...this.state.order };
     order[key] = order[key]+1 || 1;
     this.setState({ order });
   }
 
-  updateFish = (key, updatedFish) => {
-    const fishes = {...this.state.fishes};
-    fishes[key] = updatedFish;
-    this.setState({fishes})
+  removeFromOrder = (key) => {
+    const order = { ...this.state.order };
+    delete order[key]; // can be deleted, because not synced with Firebase
+    this.setState({ order });
   }
 
   render() {
@@ -82,8 +94,18 @@ class App extends React.Component {
             }
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order} />
-        <Inventory fishes={this.state.fishes} addFish={this.addFish} updateFish={this.updateFish} loadSamples={this.loadSamples} />
+        <Order
+          fishes={this.state.fishes}
+          order={this.state.order}
+          removeFromOrder={this.removeFromOrder}
+        />
+        <Inventory
+          fishes={this.state.fishes}
+          addFish={this.addFish}
+          updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
+          loadSamples={this.loadSamples}
+        />
       </div>
     )
   }
