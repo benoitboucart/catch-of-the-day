@@ -8,12 +8,6 @@ class StorePicker extends React.Component {
     history: PropTypes.object.isRequired
   }
 
-  // constructor() {
-  //   super();
-  //   // Make sure to make "this" available in goToStore function (or use goToStore as arrow function)
-  //   this.goToStore = this.goToStore.bind(this);
-  // }
-
   goToStore = e => {
     // If you write this function as goToStore(e) {...
     // then in order to use 'this' inside of it,

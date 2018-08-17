@@ -5,6 +5,24 @@ import Order from './Order';
 import Inventory from './Inventory';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      fishes: {},
+      order: {}
+    };
+  }
+
+  addFish = (fish) => {
+    // Update our state
+    // Use spread operator to copy fishes and make new object
+    const fishes = {...this.state.fishes};
+    fishes[`fish-${Date.now()}`] = fish;
+
+    // Set state
+    this.setState({ fishes }); // { fishes: fishes }
+  }
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -12,7 +30,7 @@ class App extends React.Component {
           <Header cool={true} tagline="Fresh BNWA" />
         </div>
         <Order />
-        <Inventory />
+        <Inventory addFish={this.addFish} />
       </div>
     )
   }
