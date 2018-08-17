@@ -4,7 +4,7 @@ import { formatPrice } from '../helpers';
 class Fish extends React.Component {
   render(){
     const { details, index } = this.props;
-    const isAvailable = details.status == `available`;
+    const isAvailable = details.status === `available`;
     return (
       <li className="menu-fish">
         <img src={details.image} alt={details.name} />
