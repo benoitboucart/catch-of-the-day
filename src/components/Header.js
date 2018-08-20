@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-/* 
- * Stateless functional component 
+/*
+ * Stateless functional component
  * */
 const Header = props => {
   return (
@@ -22,5 +23,9 @@ const Header = props => {
     </header>
   )
 };
+
+Header.propTypes = { // Header is not a regular component, so you put propTypes here
+  tagline: PropTypes.string.isRequired
+}
 
 export default Header;

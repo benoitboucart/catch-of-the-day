@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Header from './Header';
 import Order from './Order';
@@ -8,13 +9,22 @@ import sampleFishes from '../sample-fishes';
 import base from '../base';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      fishes: {},
-      order: {}
-    };
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     fishes: {},
+  //     order: {}
+  //   };
+  // }
+
+  state = { // Using a property to set state
+    fishes: {},
+    order: {}
   }
+
+  static propTypes = {
+    match: PropTypes.object.isRequired
+  };
 
   componentWillMount = () => {
     // This runs before <App/> is rendered

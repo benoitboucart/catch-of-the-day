@@ -1,7 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AddFishForm from './AddFishForm';
 
 class Inventory extends React.Component {
+  static propTypes = {
+    fishes: PropTypes.object.isRequired,
+    updateFish: PropTypes.func.isRequired,
+    deleteFish: PropTypes.func.isRequired,
+    loadSamples: PropTypes.func.isRequired
+  };
+
   handleChange = (e, key) => {
     const fish = this.props.fishes[key];
     // Take copy of fish & update with new data
