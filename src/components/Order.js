@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatPrice } from '../helpers';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 class Order extends React.Component {
   renderOrder = (key) => {
@@ -10,22 +11,45 @@ class Order extends React.Component {
         &times;
       </button>
     );
+    const transitionOptions = {
+      classNames: "order",
+      key,
+      timeout: { enter: 500, exit: 500 }
+    }
+
     if(!fish || fish.status === `unavailable`){
+      { /* Spread transitionOptions into this tag */ }
       return (
-        <li key={key}>
-          Sorry, {fish ? fish.name : 'fish'} is no longer available
-          {removeOrder}
-        </li>
+        <CSSTransition {...transitionOptions}>
+          <li key={key}>
+            Sorry, {fish ? fish.name : 'fish'} is no longer available
+            {removeOrder}
+          </li>
+        </CSSTransition>
       );
     }
     return (
-      <li key={key}>
-        <span>{count}lbs {fish.name}</span>
-        <span className="price">
-          {formatPrice(fish.price * count)}
-        </span>
-        {removeOrder}
-      </li>
+      <CSSTransition {...transitionOptions}>
+        <li key={key}>
+          <span>
+            <TransitionGroup component="span" className="count">
+              <CSSTransition
+                classNames="count"
+                key={count}
+                timeout={{ enter: 500, exit: 500 }}
+              >
+                <span>{count}</span>
+              </CSSTransition>
+            </TransitionGroup>
+            lbs {fish.name}
+          </span>
+
+          <span className="price">
+            {formatPrice(fish.price * count)}
+          </span>
+          {removeOrder}
+        </li>
+      </CSSTransition>
     );
   }
 
@@ -44,8 +68,13 @@ class Order extends React.Component {
     return (
       <div className="order-wrap">
         <h2>Your order</h2>
-        <ul className="order">
+        <TransitionGroup
+          component="ul"
+          className="order"
+        >
           {orderIds.map(this.renderOrder)}
+        </TransitionGroup>
+        <ul className="order">
           <li className="total">
             <strong>Total:</strong>
             {formatPrice(total)}
