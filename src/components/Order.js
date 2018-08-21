@@ -25,7 +25,7 @@ class Order extends React.Component {
     }
 
     if(!fish || fish.status === `unavailable`){
-      { /* Spread transitionOptions into this tag */ }
+      // Spread transitionOptions into this tag
       return (
         <CSSTransition {...transitionOptions}>
           <li key={key}>
