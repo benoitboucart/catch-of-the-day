@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 class AddFishForm extends React.Component {
   static propTypes = {
     addFish: PropTypes.func.isRequired
-  }
+  };
 
   createFish = e => {
     e.preventDefault();
     const fish = {
       name: this.name.value,
-      price: this.price.value,
+      price: parseInt(this.price.value, 10),
       status: this.status.value,
       desc: this.desc.value,
       image: this.image.value,

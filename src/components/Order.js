@@ -8,7 +8,7 @@ class Order extends React.Component {
     fishes: PropTypes.object.isRequired,
     order: PropTypes.object.isRequired,
     removeFromOrder: PropTypes.func.isRequired
-  }
+  };
 
   renderOrder = (key) => {
     const fish = this.props.fishes[key];
