@@ -45,11 +45,11 @@ class App extends React.Component {
   }
   componentWillUnmount = () => {
     base.removeBinding(this.ref);
-  }
+  };
 
   componentWillUpdate = (nextProps, nextState) => {
     localStorage.setItem(`order-${this.props.match.params.storeId}`, JSON.stringify(nextState.order))
-  }
+  };
 
   addFish = (fish) => {
     // Update our state
@@ -59,13 +59,13 @@ class App extends React.Component {
 
     // Set state
     this.setState({ fishes }); // { fishes: fishes }
-  }
+  };
 
   updateFish = (key, updatedFish) => {
     const fishes = {...this.state.fishes};
     fishes[key] = updatedFish;
     this.setState({ fishes })
-  }
+  };
 
   deleteFish = (key) => {
     const fishes = {...this.state.fishes};
@@ -77,21 +77,21 @@ class App extends React.Component {
     this.setState({
       fishes: sampleFishes
     });
-  }
+  };
 
   addToOrder = (key) => {
     const order = { ...this.state.order };
     order[key] = order[key]+1 || 1;
     this.setState({ order });
-  }
+  };
 
   removeFromOrder = (key) => {
     const order = { ...this.state.order };
     delete order[key]; // can be deleted, because not synced with Firebase
     this.setState({ order });
-  }
+  };
 
-  render() {
+  render = () => {
     return (
       <div className="catch-of-the-day">
         <div className="menu">
@@ -119,7 +119,7 @@ class App extends React.Component {
         />
       </div>
     )
-  }
+  };
 }
 
 export default App;

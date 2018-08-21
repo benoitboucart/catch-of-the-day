@@ -58,7 +58,7 @@ class Order extends React.Component {
         </li>
       </CSSTransition>
     );
-  }
+  };
 
   render = () => {
     const orderIds = Object.keys(this.props.order);
@@ -90,7 +90,7 @@ class Order extends React.Component {
         <p>{orderIds}</p>
       </div>
     )
-  }
+  };
 }
 
 export default Order;

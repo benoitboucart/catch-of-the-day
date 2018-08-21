@@ -6,7 +6,7 @@ class StorePicker extends React.Component {
 
   static propTypes = {
     history: PropTypes.object.isRequired
-  }
+  };
 
   goToStore = e => {
     // If you write this function as goToStore(e) {...
@@ -19,9 +19,9 @@ class StorePicker extends React.Component {
     // 3. Change the page to /store/whatever-they-entered
     // Can use history.push because it's a prop passed to StorePicker from Router
     this.props.history.push(`/store/${storeName}`); // React Router renders the right component for this
-  }
+  };
 
-  render() {
+  render = () => {
     return (
       <form className="store-selector" onSubmit={this.goToStore}>
         { /* This is a comment in JSX */ }
@@ -33,7 +33,7 @@ class StorePicker extends React.Component {
         <button type="submit">Visit store</button>
       </form>
     )
-  }
+  };
 }
 
 export default StorePicker;

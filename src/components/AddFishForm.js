@@ -17,9 +17,9 @@ class AddFishForm extends React.Component {
     }
     this.props.addFish(fish);
     this.fishForm.reset();
-  }
+  };
 
-  render() {
+  render = () => {
     return (
       <form ref={(input) => this.fishForm = input} className="fish-edit" onSubmit={this.createFish}>
         <input ref={(input) => this.name = input} name="name" type="text" placeholder="Name" />
@@ -33,7 +33,7 @@ class AddFishForm extends React.Component {
         <button type="submit">+ Add Fish</button>
       </form>
     )
-  }
+  };
 }
 
 export default AddFishForm;

@@ -14,9 +14,9 @@ class Fish extends React.Component {
     }),
     index: PropTypes.string.isRequired,
     addToOrder: PropTypes.func.isRequired
-  }
+  };
 
-  render(){
+  render = () => {
     const { details, index } = this.props;
     const isAvailable = details.status === `available`;
     return (
@@ -32,7 +32,7 @@ class Fish extends React.Component {
         </button>
       </li>
     );
-  }
+  };
 }
 
 export default Fish;

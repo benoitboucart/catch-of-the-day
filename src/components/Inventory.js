@@ -24,7 +24,7 @@ class Inventory extends React.Component {
         this.authHandler({ user });
       }
     })
-  }
+  };
 
   handleChange = (e, key) => {
     const fish = this.props.fishes[key];
@@ -34,7 +34,7 @@ class Inventory extends React.Component {
       [e.target.name]: e.target.value
     };
     this.props.updateFish(key, updatedFish);
-  }
+  };
 
   authenticate = (provider) => {
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
@@ -42,7 +42,7 @@ class Inventory extends React.Component {
       .auth()
       .signInWithPopup(authProvider)
       .then(this.authHandler);
-  }
+  };
 
   authHandler = async authData => {
     // 1. Look up the current store in the firebase database
@@ -60,12 +60,12 @@ class Inventory extends React.Component {
       uid: authData.user.uid,
       owner: storeRef.owner || authData.user.uid
     })
-  }
+  };
 
   logout = async () => {
     await firebase.auth().signOut();
     this.setState({ uid: null });
-  }
+  };
 
   renderInventory = (key) => {
     const fish = this.props.fishes[key];
@@ -141,7 +141,7 @@ class Inventory extends React.Component {
         <button onClick={this.props.loadSamples}>Load sample fish</button>
       </div>
     )
-  }
+  };
 }
 
 export default Inventory;
